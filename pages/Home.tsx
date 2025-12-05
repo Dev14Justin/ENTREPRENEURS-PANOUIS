@@ -27,9 +27,9 @@ const Hero: React.FC = () => (
             Nous accompagnons les coachs, thérapeutes et experts en transformation de vie à créer une activité puissante, stable et hautement rentable — sans s’épuiser.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="#contact" className="inline-flex justify-center items-center px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-sm shadow-lg hover:bg-yellow-500 transition-all transform hover:-translate-y-1">
+            <Link to="/diagnostic" className="inline-flex justify-center items-center px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-sm shadow-lg hover:bg-yellow-500 transition-all transform hover:-translate-y-1">
               Réserver un Diagnostic Stratégique
-            </a>
+            </Link>
             <Link to="/about" className="inline-flex justify-center items-center px-8 py-4 border border-white text-white font-medium rounded-sm hover:bg-white hover:text-brand-primary transition-colors">
               Découvrir notre approche
             </Link>
@@ -88,14 +88,23 @@ const Methodology: React.FC = () => (
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {EPANOUIS_STEPS.map((step, idx) => (
-          <div key={idx} className="group bg-stone-800/50 p-6 rounded-sm border border-stone-700 hover:border-brand-primary transition-colors cursor-default">
-            <div className="flex items-center gap-4 mb-3">
-              <span className="text-4xl font-black text-brand-primary opacity-30 group-hover:opacity-100 transition-opacity">
-                {step.l}
-              </span>
-              <h3 className="font-bold text-lg leading-tight">{step.t}</h3>
+          <div key={idx} className="group flex flex-col justify-between bg-stone-800/50 p-6 rounded-sm border border-stone-700 hover:border-brand-primary transition-colors cursor-default">
+            <div>
+              <div className="flex items-center gap-4 mb-3">
+                <span className="text-4xl font-black text-brand-primary opacity-30 group-hover:opacity-100 transition-opacity">
+                  {step.l}
+                </span>
+                <h3 className="font-bold text-lg leading-tight">{step.t}</h3>
+              </div>
+              <p className="text-sm text-stone-400 mb-6">{step.d}</p>
             </div>
-            <p className="text-sm text-stone-400">{step.d}</p>
+            
+            <button
+              onClick={() => document.getElementById('why-us')?.scrollIntoView({ behavior: 'smooth' })}
+              className="self-start text-xs font-bold text-brand-primary uppercase tracking-wider hover:text-brand-accent transition-colors flex items-center gap-1 mt-auto"
+            >
+              En savoir plus <ArrowRight size={14} />
+            </button>
           </div>
         ))}
       </div>
@@ -104,7 +113,7 @@ const Methodology: React.FC = () => (
 );
 
 const WhyUs: React.FC = () => (
-  <section className="py-24 bg-stone-100">
+  <section id="why-us" className="py-24 animate-bg-pulse">
     <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       <div className="order-2 lg:order-1 relative">
         <div className="absolute top-0 left-0 w-24 h-24 bg-brand-accent/20 -translate-x-4 -translate-y-4"></div>
@@ -119,15 +128,15 @@ const WhyUs: React.FC = () => (
         <h2 className="text-3xl font-serif font-bold text-brand-dark">Pourquoi travailler avec nous ?</h2>
         <ul className="space-y-4">
           <li className="flex gap-4 items-start">
-            <Check className="text-brand-primary shrink-0 mt-1" />
+            <Check className="text-brand-primary shrink-0 mt-1 animate-subtle-bounce" />
             <p className="text-stone-700">Parce que nous comprenons vos défis de visibilité et de légitimité.</p>
           </li>
           <li className="flex gap-4 items-start">
-            <Check className="text-brand-primary shrink-0 mt-1" />
+            <Check className="text-brand-primary shrink-0 mt-1 animate-subtle-bounce delay-100" />
             <p className="text-stone-700">Parce que nous avons accompagné des entrepreneurs à dépasser leurs blocages.</p>
           </li>
           <li className="flex gap-4 items-start">
-            <Check className="text-brand-primary shrink-0 mt-1" />
+            <Check className="text-brand-primary shrink-0 mt-1 animate-subtle-bounce delay-200" />
             <p className="text-stone-700 font-medium italic">"Nous voulons que votre appel devienne votre réussite."</p>
           </li>
         </ul>
@@ -149,9 +158,9 @@ const CTA: React.FC = () => (
         Votre mission mérite un système. Et votre impact mérite une stratégie claire.
         Ne restez plus seul face à votre croissance.
       </p>
-      <button className="px-10 py-5 bg-brand-primary text-white font-bold text-lg rounded-sm shadow-xl hover:bg-brand-dark transition-all transform hover:scale-105">
+      <Link to="/diagnostic" className="inline-block px-10 py-5 bg-brand-primary text-white font-bold text-lg rounded-sm shadow-xl hover:bg-brand-dark transition-all transform hover:scale-105">
         Réserver mon Diagnostic Stratégique
-      </button>
+      </Link>
       <p className="mt-6 text-sm text-stone-400">
         Appel gratuit de 30 minutes • Sans engagement
       </p>

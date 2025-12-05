@@ -42,6 +42,7 @@ const MOCK_POSTS: BlogPost[] = [
     summary: 'Découvrez comment transformer vos croyances limitantes en levier de croissance pour votre activité de coaching.',
     content: 'Le mindset est souvent négligé au profit de la stratégie. Pourtant, sans un état d\'esprit solide, aucune stratégie ne tient sur la durée...',
     imageUrl: 'https://picsum.photos/800/400?random=1',
+    category: 'Mindset',
     createdAt: Date.now() - 10000000,
     published: true,
     author: 'Admin'
@@ -52,6 +53,7 @@ const MOCK_POSTS: BlogPost[] = [
     summary: 'La méthode douce pour vendre vos offres haut de gamme avec intégrité et fluidité.',
     content: 'Vendre ne doit pas être une lutte. En alignant votre offre sur votre valeur réelle, vous attirez naturellement ceux qui ont besoin de vous...',
     imageUrl: 'https://picsum.photos/800/400?random=2',
+    category: 'Stratégie',
     createdAt: Date.now() - 5000000,
     published: true,
     author: 'Admin'

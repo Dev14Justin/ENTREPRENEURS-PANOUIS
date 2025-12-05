@@ -4,6 +4,7 @@ export interface BlogPost {
   summary: string;
   content: string;
   imageUrl: string; // URL pointing to an external image
+  category: string;
   createdAt: number;
   published: boolean;
   author: string;

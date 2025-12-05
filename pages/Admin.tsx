@@ -108,6 +108,7 @@ export const AdminDashboard: React.FC = () => {
             <thead className="bg-stone-100 text-stone-600 text-sm uppercase tracking-wider">
               <tr>
                 <th className="p-4 font-semibold">Titre</th>
+                <th className="p-4 font-semibold">Catégorie</th>
                 <th className="p-4 font-semibold">Statut</th>
                 <th className="p-4 font-semibold">Date</th>
                 <th className="p-4 font-semibold text-right">Actions</th>
@@ -117,6 +118,7 @@ export const AdminDashboard: React.FC = () => {
               {posts.map(post => (
                 <tr key={post.id} className="hover:bg-stone-50 transition-colors">
                   <td className="p-4 font-medium text-stone-800">{post.title}</td>
+                  <td className="p-4 text-sm text-stone-600">{post.category || '-'}</td>
                   <td className="p-4">
                     <span className={`px-2 py-1 text-xs font-bold rounded-full ${post.published ? 'bg-green-100 text-green-800' : 'bg-stone-200 text-stone-600'}`}>
                       {post.published ? 'Publié' : 'Brouillon'}
@@ -156,6 +158,7 @@ export const AdminEditor: React.FC = () => {
     summary: '',
     content: '',
     imageUrl: '',
+    category: 'Général',
     published: false,
     author: 'Admin'
   });
@@ -220,17 +223,30 @@ export const AdminEditor: React.FC = () => {
               />
             </div>
             
-             <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1">URL Image (Externe)</label>
-              <input 
-                type="url" 
-                placeholder="https://example.com/image.jpg"
-                className="w-full px-4 py-2 border border-stone-300 rounded-sm focus:ring-1 focus:ring-brand-primary outline-none"
-                value={formData.imageUrl}
-                onChange={e => handleChange('imageUrl', e.target.value)}
-              />
-              <p className="text-xs text-stone-400 mt-1">L'image n'est pas stockée sur Firebase. Utilisez un lien externe.</p>
-            </div>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+               <div>
+                  <label className="block text-sm font-medium text-stone-700 mb-1">Catégorie</label>
+                  <input 
+                    type="text" 
+                    required
+                    className="w-full px-4 py-2 border border-stone-300 rounded-sm focus:ring-1 focus:ring-brand-primary outline-none"
+                    value={formData.category}
+                    onChange={e => handleChange('category', e.target.value)}
+                    placeholder="ex: Mindset, Stratégie, Marketing..."
+                  />
+               </div>
+               <div>
+                  <label className="block text-sm font-medium text-stone-700 mb-1">URL Image (Externe)</label>
+                  <input 
+                    type="url" 
+                    placeholder="https://example.com/image.jpg"
+                    className="w-full px-4 py-2 border border-stone-300 rounded-sm focus:ring-1 focus:ring-brand-primary outline-none"
+                    value={formData.imageUrl}
+                    onChange={e => handleChange('imageUrl', e.target.value)}
+                  />
+               </div>
+             </div>
+             <p className="text-xs text-stone-400 -mt-2">L'image n'est pas stockée sur Firebase. Utilisez un lien externe.</p>
 
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-1">Résumé court</label>

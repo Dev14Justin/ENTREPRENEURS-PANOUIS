@@ -44,6 +44,24 @@
       .delay-100 { animation-delay: 0.1s; }
       .delay-200 { animation-delay: 0.2s; }
       .delay-300 { animation-delay: 0.3s; }
+
+      /* Subtle Bounce for Icons */
+      @keyframes subtleBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+      .animate-subtle-bounce {
+        animation: subtleBounce 2s infinite ease-in-out;
+      }
+
+      /* Background Pulse */
+      @keyframes bgPulse {
+        0%, 100% { background-color: #f5f5f4; } /* stone-100 */
+        50% { background-color: #fafaf9; } /* stone-50 */
+      }
+      .animate-bg-pulse {
+        animation: bgPulse 6s ease-in-out infinite;
+      }
     </style>
   <script type="importmap">
 {

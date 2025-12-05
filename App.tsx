@@ -4,6 +4,7 @@ import { Navbar, Footer } from './components/Layout';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { BlogList, BlogDetail } from './pages/Blog';
+import { Diagnostic } from './pages/Diagnostic';
 import { AdminLogin, AdminDashboard, AdminEditor } from './pages/Admin';
 import { subscribeToAuth, loginAdmin, logoutAdmin } from './services/firebase';
 import { User } from './types';
@@ -73,6 +74,7 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<BlogList />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
+              <Route path="/diagnostic" element={<Diagnostic />} />
               
               {/* Admin Auth */}
               <Route path="/login" element={<AdminLogin />} />

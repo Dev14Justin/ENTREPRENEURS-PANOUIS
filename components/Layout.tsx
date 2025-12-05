@@ -65,12 +65,12 @@ export const Navbar: React.FC = () => {
                 Déconnexion
               </button>
             ) : (
-              <a
-                href="#contact"
+              <Link
+                to="/diagnostic"
                 className="inline-flex items-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-sm text-white bg-brand-primary hover:bg-brand-dark transition-all shadow-sm"
               >
                 Diagnostic Stratégique
-              </a>
+              </Link>
             )}
           </div>
 
@@ -108,13 +108,13 @@ export const Navbar: React.FC = () => {
                 Déconnexion
               </button>
             ) : (
-              <a
-                href="#contact"
+              <Link
+                to="/diagnostic"
                 onClick={() => setIsOpen(false)}
                 className="block w-full text-center mt-4 px-5 py-3 text-base font-medium rounded-md text-white bg-brand-primary"
               >
                 Diagnostic Stratégique
-              </a>
+              </Link>
             )}
           </div>
         </div>
@@ -172,7 +172,9 @@ export const Footer: React.FC = () => {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-stone-800 text-center text-xs text-stone-500">
-          © {new Date().getFullYear()} Entrepreneurs Epanouis. Tous droits réservés.
+           © {new Date().getFullYear()} Entrepreneurs Epanouis. Tous droits réservés.
+           <span className="mx-2">•</span>
+           <Link to="/login" className="hover:text-stone-300 transition-colors">Administration</Link>
         </div>
       </div>
     </footer>
