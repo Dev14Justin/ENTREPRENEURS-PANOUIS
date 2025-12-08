@@ -24,39 +24,39 @@ export const AdminLogin: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-stone-100 px-4">
-      <div className="bg-white p-8 rounded-sm shadow-md w-full max-w-md border-t-4 border-brand-primary">
-        <h2 className="text-2xl font-serif font-bold text-center text-brand-dark mb-6">Espace Administration</h2>
+    <div className="min-h-screen flex items-center justify-center bg-brand-light px-4">
+      <div className="bg-white p-10 rounded-3xl shadow-xl w-full max-w-md border-t-4 border-brand-primary">
+        <h2 className="text-3xl font-serif font-bold text-center text-brand-dark mb-8">Espace Administration</h2>
         
-        {error && <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-sm">{error}</div>}
-        <div className="mb-6 p-3 bg-blue-50 text-blue-800 text-xs rounded-sm">
+        {error && <div className="mb-6 p-4 bg-red-50 text-red-600 text-sm rounded-xl border border-red-100">{error}</div>}
+        <div className="mb-8 p-4 bg-blue-50 text-brand-dark text-xs rounded-xl border border-blue-100">
            <strong>Demo Mode:</strong> Utilisez <em>admin@epanouis.com</em> / <em>password</em>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-1">Email</label>
+            <label className="block text-sm font-bold text-slate-700 mb-2">Email</label>
             <input 
               type="email" 
               required
-              className="w-full px-4 py-2 border border-stone-300 rounded-sm focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none"
+              className="w-full px-5 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all"
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-1">Mot de passe</label>
+            <label className="block text-sm font-bold text-slate-700 mb-2">Mot de passe</label>
             <input 
               type="password" 
               required
-              className="w-full px-4 py-2 border border-stone-300 rounded-sm focus:ring-2 focus:ring-brand-primary outline-none"
+              className="w-full px-5 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-primary outline-none transition-all"
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
           </div>
           <button 
             type="submit"
-            className="w-full py-3 bg-brand-primary text-white font-bold rounded-sm hover:bg-brand-dark transition-colors"
+            className="w-full py-3 bg-brand-primary text-white font-bold rounded-full hover:bg-brand-dark shadow-lg hover:shadow-xl hover:scale-105 transition-all"
           >
             Se connecter
           </button>
@@ -88,51 +88,51 @@ export const AdminDashboard: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="p-10 text-center">Chargement...</div>;
+  if (loading) return <div className="p-10 text-center text-brand-primary"><Loader2 className="animate-spin inline-block mr-2"/> Chargement...</div>;
 
   return (
-    <div className="bg-stone-50 min-h-screen py-10">
+    <div className="bg-brand-light min-h-screen py-10">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-10">
           <h1 className="text-3xl font-serif font-bold text-brand-dark">Gestion des Articles</h1>
           <Link 
             to="/admin/posts/new"
-            className="flex items-center gap-2 px-4 py-2 bg-brand-primary text-white rounded-sm hover:bg-brand-dark transition-colors"
+            className="flex items-center gap-2 px-6 py-3 bg-brand-primary text-white font-bold rounded-full hover:bg-brand-dark transition-all shadow-md hover:shadow-lg"
           >
-            <Plus size={18} /> Nouvel Article
+            <Plus size={20} /> Nouvel Article
           </Link>
         </div>
 
-        <div className="bg-white rounded-sm shadow-sm border border-stone-200 overflow-hidden">
+        <div className="bg-white rounded-3xl shadow-sm border border-brand-soft/20 overflow-hidden">
           <table className="w-full text-left border-collapse">
-            <thead className="bg-stone-100 text-stone-600 text-sm uppercase tracking-wider">
+            <thead className="bg-slate-50 text-slate-600 text-sm uppercase tracking-wider border-b border-slate-100">
               <tr>
-                <th className="p-4 font-semibold">Titre</th>
-                <th className="p-4 font-semibold">Catégorie</th>
-                <th className="p-4 font-semibold">Statut</th>
-                <th className="p-4 font-semibold">Date</th>
-                <th className="p-4 font-semibold text-right">Actions</th>
+                <th className="p-6 font-bold">Titre</th>
+                <th className="p-6 font-bold">Catégorie</th>
+                <th className="p-6 font-bold">Statut</th>
+                <th className="p-6 font-bold">Date</th>
+                <th className="p-6 font-bold text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-stone-200">
+            <tbody className="divide-y divide-slate-100">
               {posts.map(post => (
-                <tr key={post.id} className="hover:bg-stone-50 transition-colors">
-                  <td className="p-4 font-medium text-stone-800">{post.title}</td>
-                  <td className="p-4 text-sm text-stone-600">{post.category || '-'}</td>
-                  <td className="p-4">
-                    <span className={`px-2 py-1 text-xs font-bold rounded-full ${post.published ? 'bg-green-100 text-green-800' : 'bg-stone-200 text-stone-600'}`}>
+                <tr key={post.id} className="hover:bg-brand-light/30 transition-colors">
+                  <td className="p-6 font-bold text-brand-dark">{post.title}</td>
+                  <td className="p-6 text-sm text-slate-600 font-medium">{post.category || '-'}</td>
+                  <td className="p-6">
+                    <span className={`px-3 py-1 text-xs font-bold rounded-full ${post.published ? 'bg-green-100 text-green-800' : 'bg-slate-200 text-slate-600'}`}>
                       {post.published ? 'Publié' : 'Brouillon'}
                     </span>
                   </td>
-                  <td className="p-4 text-sm text-stone-500">{new Date(post.createdAt).toLocaleDateString()}</td>
-                  <td className="p-4 text-right space-x-2">
-                     <Link to={`/blog/${post.id}`} target="_blank" className="inline-block p-2 text-stone-400 hover:text-brand-primary" title="Voir">
+                  <td className="p-6 text-sm text-slate-500">{new Date(post.createdAt).toLocaleDateString()}</td>
+                  <td className="p-6 text-right space-x-2">
+                     <Link to={`/blog/${post.id}`} target="_blank" className="inline-block p-2 text-slate-400 hover:text-brand-primary hover:bg-brand-light rounded-full transition-all" title="Voir">
                       <Eye size={18} />
                     </Link>
-                    <Link to={`/admin/posts/${post.id}`} className="inline-block p-2 text-stone-400 hover:text-blue-600" title="Modifier">
+                    <Link to={`/admin/posts/${post.id}`} className="inline-block p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all" title="Modifier">
                       <Edit size={18} />
                     </Link>
-                    <button onClick={() => handleDelete(post.id)} className="inline-block p-2 text-stone-400 hover:text-red-600" title="Supprimer">
+                    <button onClick={() => handleDelete(post.id)} className="inline-block p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-full transition-all" title="Supprimer">
                       <Trash2 size={18} />
                     </button>
                   </td>
@@ -140,7 +140,7 @@ export const AdminDashboard: React.FC = () => {
               ))}
             </tbody>
           </table>
-          {posts.length === 0 && <div className="p-8 text-center text-stone-500">Aucun article trouvé.</div>}
+          {posts.length === 0 && <div className="p-10 text-center text-slate-500">Aucun article trouvé.</div>}
         </div>
       </div>
     </div>
@@ -199,72 +199,72 @@ export const AdminEditor: React.FC = () => {
   };
 
   return (
-    <div className="bg-stone-50 min-h-screen py-10">
+    <div className="bg-brand-light min-h-screen py-10">
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-6 flex items-center justify-between">
             <h1 className="text-2xl font-serif font-bold text-brand-dark">
             {isEdit ? 'Modifier l\'article' : 'Nouvel Article'}
             </h1>
-            <Link to="/admin" className="text-stone-500 hover:text-stone-800"><X size={24}/></Link>
+            <Link to="/admin" className="text-slate-500 hover:text-brand-dark p-2 hover:bg-slate-200 rounded-full transition-all"><X size={24}/></Link>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-sm shadow-md border border-stone-200 space-y-6">
+        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-3xl shadow-md border border-brand-soft/20 space-y-6">
           
           {/* Main Info */}
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1">Titre</label>
+              <label className="block text-sm font-bold text-slate-700 mb-2">Titre</label>
               <input 
                 required
                 type="text" 
-                className="w-full px-4 py-2 border border-stone-300 rounded-sm focus:ring-1 focus:ring-brand-primary outline-none"
+                className="w-full px-5 py-3 border border-slate-300 rounded-xl focus:ring-1 focus:ring-brand-primary outline-none"
                 value={formData.title}
                 onChange={e => handleChange('title', e.target.value)}
               />
             </div>
             
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-1">Catégorie</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-2">Catégorie</label>
                   <input 
                     type="text" 
                     required
-                    className="w-full px-4 py-2 border border-stone-300 rounded-sm focus:ring-1 focus:ring-brand-primary outline-none"
+                    className="w-full px-5 py-3 border border-slate-300 rounded-xl focus:ring-1 focus:ring-brand-primary outline-none"
                     value={formData.category}
                     onChange={e => handleChange('category', e.target.value)}
                     placeholder="ex: Mindset, Stratégie, Marketing..."
                   />
                </div>
                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-1">URL Image (Externe)</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-2">URL Image (Externe)</label>
                   <input 
                     type="url" 
                     placeholder="https://example.com/image.jpg"
-                    className="w-full px-4 py-2 border border-stone-300 rounded-sm focus:ring-1 focus:ring-brand-primary outline-none"
+                    className="w-full px-5 py-3 border border-slate-300 rounded-xl focus:ring-1 focus:ring-brand-primary outline-none"
                     value={formData.imageUrl}
                     onChange={e => handleChange('imageUrl', e.target.value)}
                   />
                </div>
              </div>
-             <p className="text-xs text-stone-400 -mt-2">L'image n'est pas stockée sur Firebase. Utilisez un lien externe.</p>
+             <p className="text-xs text-slate-400 -mt-2">L'image n'est pas stockée sur Firebase. Utilisez un lien externe.</p>
 
             <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1">Résumé court</label>
+              <label className="block text-sm font-bold text-slate-700 mb-2">Résumé court</label>
               <textarea 
                 required
                 rows={2}
-                className="w-full px-4 py-2 border border-stone-300 rounded-sm focus:ring-1 focus:ring-brand-primary outline-none resize-none"
+                className="w-full px-5 py-3 border border-slate-300 rounded-xl focus:ring-1 focus:ring-brand-primary outline-none resize-none"
                 value={formData.summary}
                 onChange={e => handleChange('summary', e.target.value)}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1">Contenu</label>
+              <label className="block text-sm font-bold text-slate-700 mb-2">Contenu</label>
               <textarea 
                 required
                 rows={12}
-                className="w-full px-4 py-2 border border-stone-300 rounded-sm focus:ring-1 focus:ring-brand-primary outline-none font-mono text-sm"
+                className="w-full px-5 py-3 border border-slate-300 rounded-xl focus:ring-1 focus:ring-brand-primary outline-none font-mono text-sm"
                 value={formData.content}
                 onChange={e => handleChange('content', e.target.value)}
               />
@@ -272,28 +272,28 @@ export const AdminEditor: React.FC = () => {
           </div>
 
           {/* Sidebar Settings */}
-          <div className="flex items-center justify-between pt-6 border-t border-stone-100">
+          <div className="flex items-center justify-between pt-8 border-t border-slate-100">
              <div className="flex items-center gap-3">
                 <input 
                   type="checkbox" 
                   id="published"
                   checked={formData.published}
                   onChange={e => handleChange('published', e.target.checked)}
-                  className="w-4 h-4 text-brand-primary border-stone-300 rounded focus:ring-brand-primary"
+                  className="w-5 h-5 text-brand-primary border-slate-300 rounded focus:ring-brand-primary"
                 />
-                <label htmlFor="published" className="text-sm font-medium text-stone-700 select-none">
+                <label htmlFor="published" className="text-sm font-medium text-slate-700 select-none">
                   Publier immédiatement
                 </label>
              </div>
 
              <div className="flex gap-4">
-               <Link to="/admin" className="px-6 py-2 border border-stone-300 text-stone-600 rounded-sm hover:bg-stone-50">
+               <Link to="/admin" className="px-6 py-3 border border-slate-300 text-slate-600 font-medium rounded-full hover:bg-slate-50">
                  Annuler
                </Link>
                <button 
                 type="submit" 
                 disabled={loading}
-                className="flex items-center gap-2 px-6 py-2 bg-brand-primary text-white rounded-sm hover:bg-brand-dark disabled:opacity-50"
+                className="flex items-center gap-2 px-8 py-3 bg-brand-primary text-white font-bold rounded-full hover:bg-brand-dark disabled:opacity-50 transition-all hover:scale-105"
                >
                  {loading ? <Loader2 className="animate-spin" size={18}/> : <Save size={18} />}
                  Enregistrer

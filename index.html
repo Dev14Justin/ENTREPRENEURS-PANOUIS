@@ -17,11 +17,12 @@
             },
             colors: {
               brand: {
-                dark: '#1c1917', // Stone 900
-                primary: '#0f766e', // Teal 700
-                secondary: '#d6d3d1', // Stone 300
-                light: '#fafaf9', // Stone 50
-                accent: '#ca8a04', // Yellow 600 (Gold-ish)
+                dark: '#03045E',       // Deep Twilight
+                primary: '#0077B6',    // Bright Teal Blue
+                secondary: '#00B4D8',  // Turquoise Surf
+                soft: '#90E0EF',       // Frosted Blue
+                light: '#CAF0F8',      // Light Cyan
+                white: '#FFFFFF',
               }
             }
           }
@@ -54,13 +55,13 @@
         animation: subtleBounce 2s infinite ease-in-out;
       }
 
-      /* Background Pulse */
+      /* Background Pulse adapted for blue theme */
       @keyframes bgPulse {
-        0%, 100% { background-color: #f5f5f4; } /* stone-100 */
-        50% { background-color: #fafaf9; } /* stone-50 */
+        0%, 100% { background-color: #CAF0F8; } /* brand-light */
+        50% { background-color: #E0F7FA; } /* lighter cyan */
       }
       .animate-bg-pulse {
-        animation: bgPulse 6s ease-in-out infinite;
+        animation: bgPulse 8s ease-in-out infinite;
       }
     </style>
   <script type="importmap">
@@ -72,13 +73,13 @@
     "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.10.1",
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
     "firebase/": "https://aistudiocdn.com/firebase@^12.6.0/",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
-    "vite": "https://aistudiocdn.com/vite@^7.2.7"
+    "vite": "https://aistudiocdn.com/vite@^7.2.7",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
   }
 }
 </script>
 </head>
-  <body class="bg-stone-50 text-stone-800 antialiased selection:bg-brand-primary selection:text-white">
+  <body class="bg-brand-light text-slate-800 antialiased selection:bg-brand-secondary selection:text-brand-dark">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
