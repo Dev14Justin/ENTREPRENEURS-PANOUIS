@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Instagram, Linkedin, Facebook, ArrowRight, LogOut } from 'lucide-react';
+import { Menu, X, Instagram, Linkedin, Facebook, ArrowRight, LogOut, Copy, Check } from 'lucide-react';
 import { useAuth } from '../App';
 
 export const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { isAdmin, logout } = useAuth();
   
@@ -124,7 +124,15 @@ export const Navbar: React.FC = () => {
 
 export const Footer: React.FC = () => {
   const location = useLocation();
+  const [copied, setCopied] = useState(false);
+
   if (location.pathname.startsWith('/admin') || location.pathname === '/login') return null;
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText('contact@entrepreneurs-epanouis.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <footer className="bg-brand-dark text-brand-soft py-16 rounded-t-[3rem] mt-10 shadow-[0_-10px_40px_rgba(3,4,94,0.2)]">
@@ -162,12 +170,23 @@ export const Footer: React.FC = () => {
               <a href="#" className="p-2 bg-brand-primary/20 rounded-full hover:bg-brand-secondary/20 text-white hover:text-brand-secondary transition-all"><Linkedin size={20} /></a>
               <a href="#" className="p-2 bg-brand-primary/20 rounded-full hover:bg-brand-secondary/20 text-white hover:text-brand-secondary transition-all"><Facebook size={20} /></a>
             </div>
-            <a 
-              href="mailto:contact@entrepreneurs-epanouis.com" 
-              className="inline-flex items-center gap-2 text-sm border border-brand-primary/30 px-6 py-3 rounded-full hover:border-brand-secondary hover:bg-brand-secondary/10 hover:text-white transition-all"
-            >
-              Nous contacter <ArrowRight size={14} />
-            </a>
+            <div className="flex flex-col items-start gap-4">
+               <a 
+                 href="mailto:contact@entrepreneurs-epanouis.com" 
+                 className="inline-flex items-center gap-2 text-sm border border-brand-primary/30 px-6 py-3 rounded-full hover:border-brand-secondary hover:bg-brand-secondary/10 hover:text-white transition-all"
+               >
+                 Nous contacter <ArrowRight size={14} />
+               </a>
+               <button 
+                 onClick={handleCopy}
+                 className="flex items-center gap-2 text-xs text-slate-400 hover:text-brand-secondary transition-colors ml-1 group"
+               >
+                 {copied ? <Check size={14} className="text-brand-secondary" /> : <Copy size={14} className="group-hover:scale-110 transition-transform"/>}
+                 <span className="underline decoration-dotted underline-offset-4 decoration-slate-600 group-hover:decoration-brand-secondary">
+                    {copied ? 'Adresse copiée !' : 'Copier l\'email'}
+                 </span>
+               </button>
+            </div>
           </div>
         </div>
         <div className="mt-16 pt-8 border-t border-brand-primary/20 text-center text-xs text-slate-400">
