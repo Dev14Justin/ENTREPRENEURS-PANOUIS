@@ -4,16 +4,16 @@
 import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
 import { getAuth, Auth, signInWithEmailAndPassword, signOut, onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
 import { getFirestore, Firestore, collection, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc, query, orderBy } from 'firebase/firestore';
-import { BlogPost } from '../types';
+import type { BlogPost } from '../types';
 
 // REPLACE WITH YOUR ACTUAL FIREBASE CONFIG
 const firebaseConfig = {
-  apiKey: process.env.API_KEY || "AIzaSyDummyKey-ForMockingPurposes",
-  authDomain: "entrepreneurs-epanouis.firebaseapp.com",
-  projectId: "entrepreneurs-epanouis",
-  storageBucket: "entrepreneurs-epanouis.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abcdef"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 let app: FirebaseApp | undefined;
@@ -31,6 +31,9 @@ try {
   db = getFirestore(app);
 } catch (error) {
   console.warn("Firebase initialization failed (likely due to invalid config). Using Mock Data Mode.");
+  // Explicitly set auth and db to undefined so mock mode is activated
+  auth = undefined;
+  db = undefined;
 }
 
 // --- MOCK DATA FOR PREVIEW MODE ---

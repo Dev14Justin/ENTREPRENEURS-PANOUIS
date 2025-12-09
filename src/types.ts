@@ -25,3 +25,14 @@ export interface User {
   uid: string;
   email: string | null;
 }
+
+export type DiagnosticStep = 'intro' | 'situation' | 'challenges' | 'goals' | 'contact' | 'submitting' | 'success';
+
+export interface DiagnosticFormData {
+  revenue: string;
+  challenge: string;
+  goal: string;
+  name: string;
+  email: string;
+  phone: string;
+}

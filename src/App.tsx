@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Outlet, HashRouter } from 'react-router-dom';
-import { Navbar, Footer } from './components/Layout';
+import { Navbar, Footer } from './components/layout/Layout';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { BlogList, BlogDetail } from './pages/Blog';
