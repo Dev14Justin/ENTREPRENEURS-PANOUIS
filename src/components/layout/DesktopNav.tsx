@@ -25,7 +25,7 @@ export const DesktopNav: React.FC<DesktopNavProps> = ({ links, isAdminSection, l
           className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
             location.pathname === link.path
               ? 'text-brand-primary font-bold'
-              : 'text-slate-600 hover:text-brand-primary'
+              : 'text-brand-dark hover:text-brand-primary'
           }`}
         >
           {link.label}
@@ -35,7 +35,7 @@ export const DesktopNav: React.FC<DesktopNavProps> = ({ links, isAdminSection, l
       {isAdminSection ? (
         <button 
           onClick={logout}
-          className="flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-700"
+          className="flex items-center gap-2 text-sm font-medium text-red-600 hover:text-red-800"
         >
           <LogOut size={16} />
           Déconnexion
@@ -43,7 +43,7 @@ export const DesktopNav: React.FC<DesktopNavProps> = ({ links, isAdminSection, l
       ) : (
         <Link
           to="/diagnostic"
-          className="inline-flex items-center px-8 py-3 border border-transparent text-sm font-bold rounded-full text-white bg-gradient-to-r from-brand-primary to-brand-secondary hover:shadow-lg hover:scale-105 transition-all duration-300"
+          className="inline-flex items-center px-6 py-2.5 border border-transparent text-sm font-bold rounded-md text-white bg-brand-primary hover:bg-brand-secondary transition-all duration-300 shadow-md hover:shadow-lg"
         >
           Diagnostic Stratégique
         </Link>

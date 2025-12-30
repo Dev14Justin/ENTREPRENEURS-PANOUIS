@@ -6,8 +6,8 @@ export const Logo: React.FC = () => (
     <span className="text-2xl font-serif font-bold text-brand-dark tracking-tight group-hover:text-brand-primary transition-colors">
       ENTREPRENEURS
     </span>
-    <span className="text-sm font-sans font-medium tracking-[0.2em] text-brand-primary group-hover:text-brand-secondary transition-colors">
-      EPANOUIS
+    <span className="text-xs font-sans font-semibold tracking-[0.25em] text-brand-primary group-hover:text-brand-dark transition-colors uppercase">
+      Epanouis
     </span>
   </Link>
 );
