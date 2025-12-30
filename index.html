@@ -17,11 +17,11 @@
             },
             colors: {
               brand: {
-                dark: '#03045E',       // Deep Twilight
-                primary: '#0077B6',    // Bright Teal Blue
-                secondary: '#00B4D8',  // Turquoise Surf
-                soft: '#90E0EF',       // Frosted Blue
-                light: '#CAF0F8',      // Light Cyan
+                dark: '#0B0F19',       // Deep Navy/Black
+                primary: '#0052CC',    // Professional Blue
+                secondary: '#003E99',  // Darker Blue for hovers
+                soft: '#F3F4F6',       // Gray 100
+                light: '#FFFFFF',      // White
                 white: '#FFFFFF',
               }
             }
@@ -54,15 +54,6 @@
       .animate-subtle-bounce {
         animation: subtleBounce 2s infinite ease-in-out;
       }
-
-      /* Background Pulse adapted for blue theme */
-      @keyframes bgPulse {
-        0%, 100% { background-color: #CAF0F8; } /* brand-light */
-        50% { background-color: #E0F7FA; } /* lighter cyan */
-      }
-      .animate-bg-pulse {
-        animation: bgPulse 8s ease-in-out infinite;
-      }
     </style>
   <script type="importmap">
 {
@@ -79,7 +70,7 @@
 }
 </script>
 </head>
-  <body class="bg-brand-light text-slate-800 antialiased selection:bg-brand-secondary selection:text-brand-dark">
+  <body class="bg-brand-light text-slate-800 antialiased selection:bg-brand-primary selection:text-white">
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>
   </body>
